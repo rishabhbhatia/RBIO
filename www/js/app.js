@@ -358,15 +358,24 @@ app.value('currentUser',{})
       console.log('show clip: ' + clip);
     }
 
-    $scope.playVideo = function(index) {
+    $scope.toggleVideo = function(index) {
       
       if(index === undefined) return;
       
-      console.log("hello i will start playing: "+index);
+      console.log("hello i will toggle video: "+index);
       var myVideo = document.getElementsByTagName('video')[index];
-      myVideo.src = $scope.battles[index].battleSrc;
-      myVideo.load();
-      myVideo.play();
+
+      if(!myVideo.paused) {
+        myVideo.pause();
+      }else {
+        if(myVideo.src === undefined) {
+          myVideo.src = $scope.battles[index].battleSrc;
+          myVideo.load();
+        }
+        
+        myVideo.play();
+      }
+      
     }
 
     $scope.voteBattle = function(index) {
