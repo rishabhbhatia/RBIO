@@ -286,7 +286,7 @@ app.value('currentUser',{})
 .controller('VideoCtrl', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce) {
     
-    $scope.clip = '';
+    $scope.clip =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
     $scope.battles = [
     {
       src: $scope.clip
