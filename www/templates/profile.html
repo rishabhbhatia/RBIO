@@ -1,0 +1,16 @@
+<ion-view hide-nav-bar="true">
+	<ion-content class="profile-content">
+
+	<div class="profile-avatar" ng-controller="ProfileController">
+	  	<img src="img/{{user.shortname}}_tn.jpg" class="profile-photo center">
+	  	<h5 class="center profile_heading_name">{{user.name}}, 25</h5>
+	  	<p class="center">{{user.reknown}}</p>
+	</div>
+
+	<button class="button button-block button-assertive" ng-click="socialize()">
+	  I'M GOING OUT
+	</button>
+		
+	</ion-content>
+
+</ion-view>

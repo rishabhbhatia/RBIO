@@ -1,0 +1,31 @@
+<ion-view hide-nav-bar="true"> 
+	<ion-content class="home-content">
+
+    <div class="list card" ng-repeat="item in parties">
+
+	<div class="item item-avatar">
+	    <img src="img/{{item.shortname}}_tn.jpg">
+	    <h2>{{item.name}}</h2>
+	    <p>{{item.description}}</p>
+	</div>
+
+ 	<div class="item item-body image-relative">
+		<div class="item item-image home-event-cover-photo">
+	    	<img src={{item.cover_image}} alt="{{item.name}} Photo">
+	    	<h4 class="text-absolute">₹{{$index+100}} - ₹199</h4>
+	    <!-- <p class="padding-bottom">{{item.bio | limitTo: 100}}
+	       {{item.bio.length > 100 ? '&hellip;' : ''}}
+	    </p> -->
+    </div>
+
+	  <div class="button-bar">
+		  <a class="button button-icon icon ion-heart" ng-click="goingToEvent($index)"></a>
+		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnEvent($index)"></a>
+		  <a class="button button-icon icon ion-android-people" ng-click="showPeopleGoingToEvent($index)"></a>
+		  <!-- <a class="button button-icon icon ion-close-round" ng-click="notGoingToEvent($index)"></a> -->
+	  </div>
+
+	</div>
+
+	</ion-content>
+</ion-view>

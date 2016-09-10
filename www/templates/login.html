@@ -1,0 +1,29 @@
+<ion-view hide-nav-bar="true">
+  <ion-content scroll="false">
+    <ion-view class="login-bg"> 
+    <div class="login-input-holder">
+    <img src="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/_app_store_512.png" class="login-logo">           
+        <label>
+          <input class="login-input" type="text" placeholder="Username" ng-model="data.username">
+       </label>
+       
+       <label>
+          <input class="login-input" type="password" placeholder="Password" ng-model="data.password">
+       </label>
+
+       <button class = "login-sign-in-button button button-balanced" ng-click="login()">SIGN IN
+       </button> 
+      <div class="row login-footer-holder">
+      <div class="col">
+      <a href ng-click="signup()" class="login-new-user">New here? Sign up</a> 
+      </div>
+       <div class="col">
+       <a href ng-click="resetPassword()" class="login-forgot-password">Forgot Password?</a> 
+      </div>
+      
+    </div> 
+    </div>
+
+      </ion-view>
+  </ion-content>
+</ion-view>
