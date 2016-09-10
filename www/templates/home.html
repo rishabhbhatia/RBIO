@@ -30,7 +30,7 @@
   <ion-content>
   <div class="list card" ng-repeat="battle in battles">
 	  <div class="item row">
-		  	<div class="col col-46 item-avatar center">
+		  	<div class="col col-46 center">
 		  		<div>
 					<img src="http://placehold.it/50x50">
 				    <h2>Marty McFly</h2> 
@@ -39,7 +39,7 @@
         	<div class="col col-8 center">
         		<h4>vs</h4>
         	</div>
-		    <div class="col col-46 item-avatar center">
+		    <div class="col col-46 center">
 		    	<div>
 		    		<img src="http://placehold.it/50x50">
 			    	<h2>Josh King</h2>  
@@ -52,6 +52,11 @@
    			<source ng-src="{{battle.src}}" type='video/mp4' />
 		</video>
 	</div>
+	<div class="button-bar">
+		  <a class="button button-icon icon ion-heart" ng-click="goingToEvent($index)"></a>
+		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnEvent($index)"></a>
+		  <a class="button button-icon icon ion-android-people" ng-click="showPeopleGoingToEvent($index)"></a>
+	  </div>
 </ion-list>
   	
 	<!-- <videogular vg-theme="controller.config.theme.url">
