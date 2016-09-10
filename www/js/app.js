@@ -336,7 +336,7 @@ app.value('currentUser',{})
             $scope.clip = data;
             $scope.$apply();
             $scope.clip = $sce.trustAsResourceUrl($scope.clip);
-          }, 500);
+          }, 200);
         }).error(function(data) {
           console.log('ERROR: ' + data);
         });
@@ -363,13 +363,25 @@ app.value('currentUser',{})
       if(index === undefined) return;
       
       console.log("hello i will start playing: "+index);
-     /* var myVideo = document.getElementsByTagName('video')[0];
-      myVideo.src = clips[index];
+      var myVideo = document.getElementsByTagName('video')[index];
+      myVideo.src = $scope.battles[index].battleSrc;
       myVideo.load();
-      myVideo.play();*/
+      myVideo.play();
     }
 
-    this.config = {
+    $scope.voteBattle = function(index) {
+        console.log("I vote battle at index: "+index);
+      }
+
+      $scope.commentOnBattle = function(index) {
+        console.log("I comment on battle at index: "+index);
+      }
+
+      $scope.shareBattle = function(index) {
+        console.log("I share battle at index: "+index);
+      }
+
+   /* this.config = {
         sources: [
           {src: $sce.trustAsResourceUrl("data/data/com.ionicframework.rbio/files/EwQkGVID_20160910_175236.mp4"), type: "video/mp4"}
         ],
@@ -383,18 +395,8 @@ app.value('currentUser',{})
           poster: "http://www.videogular.com/assets/images/videogular.png"
         }
       };
-
-      $scope.voteBattle = function(index) {
-        console.log("I vote battle at index: "+index);
-      }
-
-      $scope.commentOnBattle = function(index) {
-        console.log("I comment on battle at index: "+index);
-      }
-
-      $scope.shareBattle = function(index) {
-        console.log("I share battle at index: "+index);
-      }
+*/
+      
 })
 
 .service('LoginService', function($q) {
