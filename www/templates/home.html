@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true"> 
+<!-- <ion-view hide-nav-bar="true"> 
 	<ion-content class="home-content">
 
     <div class="list card" ng-repeat="item in parties">
@@ -13,19 +13,38 @@
 		<div class="item item-image home-event-cover-photo">
 	    	<img src={{item.cover_image}} alt="{{item.name}} Photo">
 	    	<h4 class="text-absolute">₹{{$index+100}} - ₹199</h4>
-	    <!-- <p class="padding-bottom">{{item.bio | limitTo: 100}}
-	       {{item.bio.length > 100 ? '&hellip;' : ''}}
-	    </p> -->
     </div>
 
 	  <div class="button-bar">
 		  <a class="button button-icon icon ion-heart" ng-click="goingToEvent($index)"></a>
 		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnEvent($index)"></a>
 		  <a class="button button-icon icon ion-android-people" ng-click="showPeopleGoingToEvent($index)"></a>
-		  <!-- <a class="button button-icon icon ion-close-round" ng-click="notGoingToEvent($index)"></a> -->
 	  </div>
 
 	</div>
 
 	</ion-content>
+</ion-view> -->
+
+<ion-view ng-controller="VideoCtrl">
+  <ion-header-bar class="bar-stable">
+	<h1 class="title">My videos</h1>
+  </ion-header-bar>
+  <ion-content>
+	  <div class="list">
+	  <div class="item item-divider">
+		  <i class="ion-videocamera"></i>
+		  Current clip
+	  </div>
+		<img ng-src="{{urlForClipThumb(clip)}}" ng-click="showClip(clip)" style="height: 250px; width: 150px;"/>
+  </div>
+ 
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar bar-light">
+	  <div class="button-bar">
+		  <button class="button button-positive" ng-click="captureVideo()">
+			  Capture a video
+		  </button>
+	  </div>
+  </ion-footer-bar>
 </ion-view>
