@@ -26,29 +26,26 @@
 	</ion-content>
 </ion-view> -->
 
-<ion-view ng-controller="VideoCtrl as controller">
+<ion-view ng-controller="VideoCtrl as controller" hide-nav-bar="true">
   <ion-content>
   <div class="list card" ng-repeat="battle in battles">
-	  <div class="item">
-	  	<div class="row">
-
+	  <div class="item row">
 		  	<div class="col col-46 item-avatar">
-		  	<div>
-				<img src="http://placehold.it/50x50">
-			    <h2>Marty McFly</h2>  
+		  		<div>
+					<img src="http://placehold.it/50x50">
+				    <h2>Marty McFly</h2> 
+		  		</div>
 		  	</div>
-		    </div>
-	        <div class="col col-8 center">
-	        	<h4>vs</h4>
-	        </div>
-	        <div class="col col-46 item-avatar">
-			    <div>
-				<img src="http://placehold.it/50x50">
-			    <h2>Josh King</h2>  
-		  	</div>
-	        </div>
-	    </div>
-	    
+        	<div class="col col-8 center">
+        		<h4>vs</h4>
+        	</div>
+		    <div class="col col-46 item-avatar">
+		    	<div>
+		    		<img src="http://placehold.it/50x50">
+			    	<h2>Josh King</h2>  
+		    	</div>
+	  		</div>
+		</div>	    
 	  <div class="item item-body">
    		<video controls class="video_content" width="100%" height="50%" ng-click="
    			playVideo($index)">
