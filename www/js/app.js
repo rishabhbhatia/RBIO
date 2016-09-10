@@ -367,6 +367,18 @@ app.value('currentUser',{})
           poster: "http://www.videogular.com/assets/images/videogular.png"
         }
       };
+
+      $scope.voteBattle = function(index) {
+        console.log("I vote battle at index: "+index);
+      }
+
+      $scope.commentOnBattle = function(index) {
+        console.log("I comment on battle at index: "+index);
+      }
+
+      $scope.shareBattle = function(index) {
+        console.log("I share battle at index: "+index);
+      }
 })
 
 .service('LoginService', function($q) {
