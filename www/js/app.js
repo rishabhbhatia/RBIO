@@ -306,6 +306,9 @@ app.value('currentUser',{})
     };
 
     $scope.urlForClipThumb = function(clipUrl) {
+
+      if(clipUrl === undefined || clipUrl.trim() === "") return "";
+      
       var name = clipUrl.substr(clipUrl.lastIndexOf('/') + 1);
       var trueOrigin = cordova.file.dataDirectory + name;
       var sliced = trueOrigin.slice(0, -4);
@@ -313,6 +316,7 @@ app.value('currentUser',{})
     }
      
     $scope.showClip = function(clip) {
+      if(clip === undefined || clip.trim() === "") return;
       console.log('show clip: ' + clip);
     }
 })
