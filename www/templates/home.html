@@ -32,26 +32,28 @@
 	  <div class="item row">
 		  	<div class="col col-46 center">
 		  		<div>
-					<img src="http://placehold.it/50x50">
+					<img src="{{battle.warrior1ProfilePhoto}}" class="warrior-profile-photo">
 				    <h2>Marty McFly</h2> 
 		  		</div>
 		  	</div>
         	<div class="col col-8 center">
-        		<h4>vs</h4>
+        		<h3>VS</h3>
         	</div>
 		    <div class="col col-46 center">
 		    	<div>
-		    		<img src="http://placehold.it/50x50">
+		    		<img src="{{battle.warrior2ProfilePhoto}}" class="warrior-profile-photo">
 			    	<h2>Josh King</h2>  
 		    	</div>
 	  		</div>
 		</div>	    
+
 	  <div class="item item-body">
    		<video controls class="video_content" width="100%" height="50%" ng-click="
    			playVideo($index)">
-   			<source ng-src="{{battle.src}}" type='video/mp4' />
+   			<source ng-src="{{battle.battleSrc}}" type='video/mp4' />
 		</video>
 	</div>
+
 	<div class="button-bar">
 		  <a class="button button-icon icon ion-thumbsup" ng-click="voteBattle($index)"></a>
 		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnBattle($index)"></a>

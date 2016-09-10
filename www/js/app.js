@@ -287,24 +287,40 @@ app.value('currentUser',{})
  $timeout, $sce) {
     
     $scope.clip =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
+    $scope.warrior1ProfilePhoto = `https://encrypted-tbn3.gstatic.com/images?q=tbn:
+      ANd9GcQdjiGN2euMAHiKkHr4WfLpUwOpsYtYvBOX_RYNHAbILf-RNuO4`;
+    $scope.warrior2ProfilePhoto = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsyoT5sbcLZ7uiwHmSE35xfFzlJcrSAUaL54X2AohKrNDnxTtaz6sIA`;
+
     $scope.battles = [
     {
-      src: $scope.clip
+      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
+      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      battleSrc: $scope.clip
     },
     {
-      src: $scope.clip
+      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
+      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      battleSrc: $scope.clip
     },
      {
-      src: $scope.clip
+      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
+      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      battleSrc: $scope.clip
     },
      {
-      src: $scope.clip
+      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
+      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      battleSrc: $scope.clip
     },
      {
-      src: $scope.clip
+      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
+      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      battleSrc: $scope.clip
     },
      {
-      src: $scope.clip
+      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
+      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      battleSrc: $scope.clip
     }
     ];
 
