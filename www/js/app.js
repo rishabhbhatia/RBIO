@@ -1,4 +1,4 @@
-var app = angular.module('starter', ['ionic', 'ngCordova'])
+var app = angular.module('starter', ['ionic', 'ngCordova', 'com.2fdevs.videogular'])
 
 app.value('currentUser',{})
 
@@ -283,12 +283,33 @@ app.value('currentUser',{})
 })
 
 
-.controller('VideoCtrl', function($scope, $cordovaCapture, VideoService, $timeout) {
+.controller('VideoCtrl', function($scope, $cordovaCapture, VideoService,
+ $timeout, $sce) {
     
     $scope.clip = '';
+    $scope.battles = [
+    {
+      src: $scope.clip
+    },
+    {
+      src: $scope.clip
+    },
+     {
+      src: $scope.clip
+    },
+     {
+      src: $scope.clip
+    },
+     {
+      src: $scope.clip
+    },
+     {
+      src: $scope.clip
+    }
+    ];
 
     $scope.captureVideo = function() {
-      var options = { limit: 1, duration: 3 }; //time in seconds
+      var options = { limit: 1, duration: 1 }; //time in seconds
 
       $cordovaCapture.captureVideo(options).then(function(videoData) {
         VideoService.saveVideo(videoData).success(function(data) {
@@ -298,7 +319,8 @@ app.value('currentUser',{})
             console.log("timeout invoked");
             $scope.clip = data;
             $scope.$apply();
-          }, 2000);
+            $scope.clip = $sce.trustAsResourceUrl($scope.clip);
+          }, 500);
         }).error(function(data) {
           console.log('ERROR: ' + data);
         });
@@ -307,8 +329,8 @@ app.value('currentUser',{})
 
     $scope.urlForClipThumb = function(clipUrl) {
 
-      if(clipUrl === undefined || clipUrl.trim() === "") return "";
-      
+      if(clipUrl === undefined || clipUrl === "") return "";
+
       var name = clipUrl.substr(clipUrl.lastIndexOf('/') + 1);
       var trueOrigin = cordova.file.dataDirectory + name;
       var sliced = trueOrigin.slice(0, -4);
@@ -316,9 +338,35 @@ app.value('currentUser',{})
     }
      
     $scope.showClip = function(clip) {
-      if(clip === undefined || clip.trim() === "") return;
+      if(clip === undefined) return;
       console.log('show clip: ' + clip);
     }
+
+    $scope.playVideo = function(index) {
+      
+      if(index === undefined) return;
+      
+      console.log("hello i will start playing: "+index);
+     /* var myVideo = document.getElementsByTagName('video')[0];
+      myVideo.src = clips[index];
+      myVideo.load();
+      myVideo.play();*/
+    }
+
+    this.config = {
+        sources: [
+          {src: $sce.trustAsResourceUrl("data/data/com.ionicframework.rbio/files/EwQkGVID_20160910_175236.mp4"), type: "video/mp4"}
+        ],
+        tracks: [
+          {
+            default: ""
+          }
+        ],
+        theme: "bower_components/videogular-themes-default/videogular.css",
+        plugins: {
+          poster: "http://www.videogular.com/assets/images/videogular.png"
+        }
+      };
 })
 
 .service('LoginService', function($q) {
@@ -444,7 +492,7 @@ app.value('currentUser',{})
     // Finally resolves the promies and returns the name
     function prevImageSuccess(succ) {
       var correctUrl = succ.slice(0, -4);
-      correctUrl += '.MOV';
+      correctUrl += '.mp4';
       deferred.resolve(correctUrl);
     }
      

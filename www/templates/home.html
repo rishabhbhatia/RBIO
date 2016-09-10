@@ -26,9 +26,44 @@
 	</ion-content>
 </ion-view> -->
 
-<ion-view ng-controller="VideoCtrl">
+<ion-view ng-controller="VideoCtrl as controller">
   <ion-content>
-		<img ng-src="{{urlForClipThumb(clip)}}" ng-click="showClip(clip)" style="height: 250px; width: 150px;"/>
+  <div class="list card" ng-repeat="battle in battles">
+	  <div class="item">
+	  	<div class="row">
+
+		  	<div class="col col-46 item-avatar">
+		  	<div>
+				<img src="http://placehold.it/50x50">
+			    <h2>Marty McFly</h2>  
+		  	</div>
+		    </div>
+	        <div class="col col-8 center">
+	        	<h4>vs</h4>
+	        </div>
+	        <div class="col col-46 item-avatar">
+			    <div>
+				<img src="http://placehold.it/50x50">
+			    <h2>Josh King</h2>  
+		  	</div>
+	        </div>
+	    </div>
+	    
+	  <div class="item item-body">
+   		<video controls class="video_content" width="100%" height="50%" ng-click="
+   			playVideo($index)">
+   			<source ng-src="" type='video/mp4' />
+		</video>
+	</div>
+</ion-list>
+  	
+	<!-- <videogular vg-theme="controller.config.theme.url">
+        <vg-media vg-src="controller.config.sources"
+                  vg-tracks="controller.config.tracks"
+                  vg-native-controls="true">
+        </vg-media>
+    </videogular> -->
+		<!-- <img ng-src="{{urlForClipThumb(clip)}}" ng-click="showClip(clip)" style="height: 250px; width: 150px;"/> -->
   </div>
  
   </ion-content>
