@@ -206,35 +206,6 @@ app.value('currentUser',{})
   }
 })
 
-
-.controller("PartyController", [ "$scope" , "$http", "$state" ,
-  function($scope, $http, $state) {
-
-      // $http.get("js/data.json").success(function(data) {
-      $http.get("192.168.1.7:3000/dictionary-api").success(function(data) {
-        $scope.parties = data;
-        console.log("hello to: "+data.length);
-
-      $scope.goingToEvent = function(eventIndex) {
-      console.log("I'm going to event at: "+eventIndex);
-      };
-
-      $scope.commentOnEvent = function(eventIndex) {
-      console.log("I want to comment on event at: "+eventIndex);
-      };
-
-      $scope.showPeopleGoingToEvent = function(eventIndex) {
-      console.log("Show me people going to event at: "+eventIndex);
-      };
-
-      $scope.notGoingToEvent = function(eventIndex) {
-      console.log("I'm not going to event at: "+eventIndex);
-      };
-
-    });
-
-}])
-
 .controller("MessagesController", [ "$scope" , "$http", "$state" ,
   function($scope, $http, $state) {
 
@@ -260,25 +231,6 @@ app.value('currentUser',{})
 
 })
 
-.controller("SocializeController", function($scope, $http, $state, $cordovaContacts) {
-
-    console.log("hello socialize controller");
-    var coptions = { fields: ['*'], multiple: true };
-    $cordovaContacts.find(coptions).then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
-      $scope.contacts = allContacts;
-      console.log(allContacts.length);
-    })
-
-    $scope.getAllContacts = function() {
-    $cordovaContacts.find().then(function(allContacts) { //omitting parameter to .find() causes all contacts to be returned
-      $scope.contacts = allContacts;
-      console.log(allContacts.length);
-    }
-  )};
-
-})
-
-
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce) {
     
@@ -292,47 +244,292 @@ app.value('currentUser',{})
 
     $scope.battles = [
     {
-      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
-      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
-      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
-      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
-      battleSrc: $scope.clip
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
 
     },
-    {
-      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
-      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
-      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
-      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
-      battleSrc: $scope.clip
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
     },
      {
-      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
-      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
-      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
-      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
-      battleSrc: $scope.clip
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
     },
      {
-      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
-      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
-      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
-      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
-      battleSrc: $scope.clip
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
     },
      {
-      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
-      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
-      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
-      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
-      battleSrc: $scope.clip
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
     },
      {
-      warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
-      warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
-      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
-      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
-      battleSrc: $scope.clip
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
+    },
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
+    },
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
+    },
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
+    },
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
+    },
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
+    },
+     {
+      battleSrc: $scope.clip,
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        }
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        }
+      }
+      ]
+
     }
     ];
 
