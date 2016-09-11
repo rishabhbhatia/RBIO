@@ -290,36 +290,52 @@ app.value('currentUser',{})
     $scope.warrior1ProfilePhoto = `https://encrypted-tbn3.gstatic.com/images?q=tbn:
       ANd9GcQdjiGN2euMAHiKkHr4WfLpUwOpsYtYvBOX_RYNHAbILf-RNuO4`;
     $scope.warrior2ProfilePhoto = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsyoT5sbcLZ7uiwHmSE35xfFzlJcrSAUaL54X2AohKrNDnxTtaz6sIA`;
+    $scope.warrior1CountryFlagPhoto = `http://www.mapsofindia.com/maps/india/india-flag-1024x600.jpg`;
+    $scope.warrior2CountryFlagPhoto = `http://inkwear.co.uk/wp-content/uploads/FLAG-SPAINMED5X3CM-2-1.jpg`;
+
 
     $scope.battles = [
     {
       warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
       warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
+      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
       battleSrc: $scope.clip
+
     },
     {
       warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
       warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
+      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
       battleSrc: $scope.clip
     },
      {
       warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
       warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
+      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
       battleSrc: $scope.clip
     },
      {
       warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
       warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
+      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
       battleSrc: $scope.clip
     },
      {
       warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
       warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
+      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
       battleSrc: $scope.clip
     },
      {
       warrior1ProfilePhoto: $scope.warrior1ProfilePhoto,
       warrior2ProfilePhoto: $scope.warrior2ProfilePhoto,
+      warrior1CountryFlagPhoto: $scope.warrior1CountryFlagPhoto,
+      warrior2CountryFlagPhoto: $scope.warrior2CountryFlagPhoto,
       battleSrc: $scope.clip
     }
     ];
