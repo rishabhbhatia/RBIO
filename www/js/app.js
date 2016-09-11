@@ -52,7 +52,7 @@ app.value('currentUser',{})
       views: {
         'home-tab': {
           templateUrl: 'templates/home.html',
-          controller: 'PartyController'
+          controller: 'BattleController'
         }
       }
     })
@@ -238,10 +238,6 @@ app.value('currentUser',{})
 .controller("MessagesController", [ "$scope" , "$http", "$state" ,
   function($scope, $http, $state) {
 
-      $http.get("192.168.1.7:3000/dictionary-api").success(function(data) {
-        $scope.messages = data;
-
-    });
 
 }])
 
@@ -283,7 +279,7 @@ app.value('currentUser',{})
 })
 
 
-.controller('VideoCtrl', function($scope, $cordovaCapture, VideoService,
+.controller('BattleController', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce) {
     
     $scope.clip =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
