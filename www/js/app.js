@@ -234,7 +234,8 @@ app.value('currentUser',{})
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce) {
     
-    $scope.clip =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
+    $scope.clip1 =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
+    $scope.clip2 =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
     $scope.warrior1ProfilePhoto = `https://encrypted-tbn3.gstatic.com/images?q=tbn:
       ANd9GcQdjiGN2euMAHiKkHr4WfLpUwOpsYtYvBOX_RYNHAbILf-RNuO4`;
     $scope.warrior2ProfilePhoto = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsyoT5sbcLZ7uiwHmSE35xfFzlJcrSAUaL54X2AohKrNDnxTtaz6sIA`;
@@ -244,7 +245,6 @@ app.value('currentUser',{})
 
     $scope.battles = [
     {
-      battleSrc: $scope.clip,
       warriors: [
       {
         name: "Rick Costanza",
@@ -253,7 +253,8 @@ app.value('currentUser',{})
         country: {
           name: "India",
           flagphotourl: $scope.warrior1CountryFlagPhoto
-        }
+        },
+        battlesrc: $scope.clip1
       },
       {
         name: "Josh Madhouse",
@@ -262,7 +263,8 @@ app.value('currentUser',{})
         country: {
           name: "Spain",
           flagphotourl: $scope.warrior2CountryFlagPhoto
-        }
+        },
+        battlesrc: $scope.clip2
       }
       ]
 
