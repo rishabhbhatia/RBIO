@@ -83,6 +83,10 @@
 	max-height: 175px;
 }
 
+.battlevoteactive {
+  color : red;
+}
+
 .messages-content {
 	padding: 0% 3%;
 }

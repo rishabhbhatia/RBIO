@@ -378,8 +378,8 @@ app.value('currentUser',{})
       
     }
 
-    $scope.voteBattle = function(index) {
-        console.log("I vote battle at index: "+index);
+    $scope.toggleVote = function(index) {
+        console.log("I toggle my vote for battle at index: "+index);
       }
 
       $scope.commentOnBattle = function(index) {
