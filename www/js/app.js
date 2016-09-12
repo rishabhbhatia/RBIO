@@ -57,6 +57,16 @@ app.value('currentUser',{})
       }
     })
 
+     .state('tabs.detail', {
+      url: '/home/:battle',
+      views: {
+        'home-tab': {
+          templateUrl: 'templates/battledetail.html',
+          controller: 'BattleDetailsController'
+        }
+      }
+    })
+
      .state('tabs.messages', {
       url: '/messages',
       views: {
@@ -232,10 +242,12 @@ app.value('currentUser',{})
 })
 
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
- $timeout, $sce) {
+ $timeout, $sce, $state) {
     
-    $scope.clip1 =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
-    $scope.clip2 =  $sce.trustAsResourceUrl('http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
+    $scope.clip1url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
+    $scope.clip2url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
+    $scope.clip1 =  $sce.trustAsResourceUrl($scope.clip1url);
+    $scope.clip2 =  $sce.trustAsResourceUrl($scope.clip2url);
     $scope.warrior1ProfilePhoto = `https://encrypted-tbn3.gstatic.com/images?q=tbn:
       ANd9GcQdjiGN2euMAHiKkHr4WfLpUwOpsYtYvBOX_RYNHAbILf-RNuO4`;
     $scope.warrior2ProfilePhoto = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsyoT5sbcLZ7uiwHmSE35xfFzlJcrSAUaL54X2AohKrNDnxTtaz6sIA`;
@@ -254,7 +266,8 @@ app.value('currentUser',{})
           name: "India",
           flagphotourl: $scope.warrior1CountryFlagPhoto
         },
-        battlesrc: $scope.clip1
+        battlesrc: $scope.clip1,
+        battlesrcurl: $scope.clip1url
       },
       {
         name: "Josh Madhouse",
@@ -264,10 +277,10 @@ app.value('currentUser',{})
           name: "Spain",
           flagphotourl: $scope.warrior2CountryFlagPhoto
         },
-        battlesrc: $scope.clip2
+        battlesrc: $scope.clip2,
+        battlesrcurl: $scope.clip2url
       }
       ]
-
     },
     {
       warriors: [
@@ -279,7 +292,8 @@ app.value('currentUser',{})
           name: "India",
           flagphotourl: $scope.warrior1CountryFlagPhoto
         },
-        battlesrc: $scope.clip1
+        battlesrc: $scope.clip1,
+        battlesrcurl: $scope.clip1url
       },
       {
         name: "Josh Madhouse",
@@ -289,10 +303,10 @@ app.value('currentUser',{})
           name: "Spain",
           flagphotourl: $scope.warrior2CountryFlagPhoto
         },
-        battlesrc: $scope.clip2
+        battlesrc: $scope.clip2,
+        battlesrcurl: $scope.clip1url
       }
       ]
-
     }
     ];
 
@@ -342,7 +356,6 @@ app.value('currentUser',{})
       }
 
       var playpausebutton = document.getElementsByClassName("playpause")[index];
-      console.log(playpausebutton);
 
       if(!myVideo.paused) {
         playpausebutton.style.display = 'block';
@@ -371,6 +384,12 @@ app.value('currentUser',{})
         console.log("I share battle at index: "+index);
       }
 
+      $scope.showBattleDetails = function(battle) {
+        console.log("Chalo battle ki info show karo: "+battle.warriors[0].name);
+        console.log(angular.toJson(battle));
+        $state.go('tabs.detail', {battle : angular.toJson(battle)});
+      }
+
    /* this.config = {
         sources: [
           {src: $sce.trustAsResourceUrl("data/data/com.ionicframework.rbio/files/EwQkGVID_20160910_175236.mp4"), type: "video/mp4"}
@@ -387,6 +406,12 @@ app.value('currentUser',{})
       };
 */
       
+})
+
+.controller("BattleDetailsController", function($scope, $http, $state) {
+
+  $scope.whichBattle = angular.fromJson($state.params.battle);
+  console.log($scope.whichBattle);
 })
 
 .service('LoginService', function($q) {
