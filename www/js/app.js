@@ -2,6 +2,26 @@ var app = angular.module('starter', ['ionic', 'ngCordova', 'com.2fdevs.videogula
 
 app.value('currentUser',{})
 
+app.directive('hideTabs', function($rootScope, $state) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attributes) {
+            scope.$watch(attributes.hideTabs, function(value){
+              $rootScope.hideTabs = value;
+            });
+
+            scope.$on('$ionicView.beforeLeave', function() {
+                var stateName = $state.current.name;
+                if(stateName === 'tabs.detail') {
+                  $rootScope.hideTabs = true;
+                }else {
+                  $rootScope.hideTabs = false;
+                }
+            });
+        }
+    };
+})
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -243,6 +263,8 @@ app.value('currentUser',{})
 
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce, $state) {
+
+  console.log("Battle controller called");
     
     $scope.clip1url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
     $scope.clip2url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
@@ -385,8 +407,6 @@ app.value('currentUser',{})
       }
 
       $scope.showBattleDetails = function(battle) {
-        console.log("Chalo battle ki info show karo: "+battle.warriors[0].name);
-        console.log(angular.toJson(battle));
         $state.go('tabs.detail', {battle : angular.toJson(battle)});
       }
 
