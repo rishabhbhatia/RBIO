@@ -268,6 +268,31 @@ app.value('currentUser',{})
       }
       ]
 
+    },
+    {
+      warriors: [
+      {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        },
+        battlesrc: $scope.clip1
+      },
+      {
+        name: "Josh Madhouse",
+        email: "jmad@gmail.com",
+        photourl: $scope.warrior2ProfilePhoto,
+        country: {
+          name: "Spain",
+          flagphotourl: $scope.warrior2CountryFlagPhoto
+        },
+        battlesrc: $scope.clip2
+      }
+      ]
+
     }
     ];
 
@@ -316,7 +341,7 @@ app.value('currentUser',{})
         console.log("The video has finished");
       }
 
-      var playpausebutton = document.getElementById("pp");
+      var playpausebutton = document.getElementsByClassName("playpause")[index];
       console.log(playpausebutton);
 
       if(!myVideo.paused) {
