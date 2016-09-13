@@ -267,8 +267,6 @@ app.directive('hideTabBar', function($timeout) {
 
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce, $state, ToggleVideoService) {
-
-  console.log("Battle controller called");
     
     $scope.clip1url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
     $scope.clip2url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
@@ -372,31 +370,10 @@ app.directive('hideTabBar', function($timeout) {
 
     $scope.toggleVideo = function(index) {
 
-      ToggleVideoService.toggleVideo(index);
-      
-      if(index === undefined) return;
-      
-   /*   console.log("hello i will toggle video: "+index);
       var myVideo = document.getElementsByTagName('video')[index];
-      myVideo.addEventListener('ended',myHandler,false);
-      function myHandler(e) {
-        console.log("The video has finished");
-      }
-
       var playpausebutton = document.getElementsByClassName("playpause")[index];
-
-      if(!myVideo.paused) {
-        playpausebutton.style.display = 'block';
-        myVideo.pause();
-      }else {
-        if(myVideo.src === undefined) {
-          myVideo.src = $scope.battles[index].battleSrc;
-          myVideo.load();
-        }
-        
-        playpausebutton.style.display = 'none';
-        myVideo.play();
-      }*/
+      
+      ToggleVideoService.toggleVideo(myVideo, playpausebutton);
       
     }
 
@@ -434,11 +411,18 @@ app.directive('hideTabBar', function($timeout) {
       
 })
 
-.controller("BattleDetailsController", function($scope, $http, $state, $sce) {
+.controller("BattleDetailsController", function($scope, $http, $state, $sce, ToggleVideoService) {
 
   $scope.whichBattle = angular.fromJson($state.params.battle);
   $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.whichBattle.warriors[0].battlesrcurl);
   console.log($scope.whichBattle);
+
+  $scope.toggleVideo = function() {
+    var myVideo = document.getElementById('videodetails');
+    var playpausebutton = document.getElementById("playpausedetails");
+
+    ToggleVideoService.toggleVideo(myVideo, playpausebutton);
+  }
 })
 
 .service('LoginService', function($q) {
@@ -611,18 +595,15 @@ app.directive('hideTabBar', function($timeout) {
     }
      
     return {
-      toggleVideo : function(index) {
-      
-      if(index === undefined) return;
-      
-      console.log("hello i will toggle video: "+index);
-      var myVideo = document.getElementsByTagName('video')[index];
+      toggleVideo : function(myVideo, playpausebutton) {
+            
+      console.log("hello i will toggle video");
+
       myVideo.addEventListener('ended',myHandler,false);
       function myHandler(e) {
         console.log("The video has finished");
       }
 
-      var playpausebutton = document.getElementsByClassName("playpause")[index];
 
       if(!myVideo.paused) {
         playpausebutton.style.display = 'block';

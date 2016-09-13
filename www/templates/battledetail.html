@@ -23,11 +23,11 @@
 	  		</div>
 		</div>	    
 
-	  <div class="item item-body" ng-click="toggleVideo($index)">
-   		<video cache-view="false" class="video_content" width="100%" height="50%">
+	  <div class="item item-body" ng-click="toggleVideo()">
+   		<video cache-view="false" class="video_content" width="100%" height="50%" id="videodetails">
    			<source ng-src="{{warrior1battlesrc}}" type='video/mp4' />
 		</video>
-		<div class="playpause"></div>
+		<div class="playpause" id="playpausedetails"></div>
 	  </div>
 
 	  <div class="button-bar">
