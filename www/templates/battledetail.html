@@ -1,3 +1,56 @@
-<ion-view title="Battle Page" hide-tabs='true'>
-    <!-- view content -->
+<ion-view title="Battle Page" hide-tab-bar ng-controller="BattleDetailsController">
+  <ion-content>
+    <div class="list card">
+	  <div class="item row" ng-click="showBattleDetails(battle)">
+		  	<div class="col col-46 center">
+		  		<div>
+					<img src="{{battle.warriors[0].photourl}}" class="warrior-profile-photo">
+				    <h2>{{battle.warriors[0].name}}</h2>
+				    <img src="{{battle.warriors[0].country.flagphotourl}}" class="
+		    			warrior-country-flag-photo">
+		  		</div>
+		  	</div>
+        	<div class="col col-8 col-center center">
+        		<h2>vs</h2>
+        	</div>
+		    <div class="col col-46 center">
+		    	<div>
+		    		<img src="{{battle.warriors[1].photourl}}" class="warrior-profile-photo">
+				    <h2>{{battle.warriors[1].name}}</h2>
+				    <img src="{{battle.warriors[1].country.flagphotourl}}" class="
+		    			warrior-country-flag-photo">
+		    	</div>
+	  		</div>
+		</div>	    
+
+	  <div class="item item-body" ng-click="toggleVideo($index)">
+   		<video cache-view="false" class="video_content" width="100%" height="50%">
+   			<source ng-src="{{battle.warriors[0].battlesrc}}" type='video/mp4' />
+		</video>
+		<div class="playpause"></div>
+	  </div>
+
+	  <div class="button-bar">
+		  <a class="button button-icon icon ion-thumbsup" ng-class="{battlevoteactive: true}" ng-click="toggleVote($index)"></a>
+		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnBattle($index)"></a>
+		  <a class="button button-icon icon ion-android-share" ng-click="shareBattle($index)"></a>
+	  </div>
+  	
+	<!-- <videogular vg-theme="controller.config.theme.url">
+        <vg-media vg-src="controller.config.sources"
+                  vg-tracks="controller.config.tracks"
+                  vg-native-controls="true">
+        </vg-media>
+    </videogular> -->
+		<!-- <img ng-src="{{urlForClipThumb(clip)}}" ng-click="showClip(clip)" style="height: 250px; width: 150px;"/> -->
+  </div>
+ 
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar bar-light">
+	  <div class="button-bar">
+		  <button class="button button-positive ion-icon ion-music-note icon-left padding" ng-click="captureVideo()">
+			  START BATTLE
+		  </button>
+	  </div>
+  </ion-footer-bar>
 </ion-view>
