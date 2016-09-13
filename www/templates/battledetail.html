@@ -1,12 +1,12 @@
 <ion-view title="Battle Page" hide-tab-bar ng-controller="BattleDetailsController">
   <ion-content>
-    <div class="list card">
-	  <div class="item row" ng-click="showBattleDetails(battle)">
+    <div class="card">
+	  <div class="item row">
 		  	<div class="col col-46 center">
 		  		<div>
-					<img src="{{battle.warriors[0].photourl}}" class="warrior-profile-photo">
-				    <h2>{{battle.warriors[0].name}}</h2>
-				    <img src="{{battle.warriors[0].country.flagphotourl}}" class="
+					<img src="{{whichBattle.warriors[0].photourl}}" class="warrior-profile-photo">
+				    <h2>{{whichBattle.warriors[0].name}}</h2>
+				    <img src="{{whichBattle.warriors[0].country.flagphotourl}}" class="
 		    			warrior-country-flag-photo">
 		  		</div>
 		  	</div>
@@ -15,9 +15,9 @@
         	</div>
 		    <div class="col col-46 center">
 		    	<div>
-		    		<img src="{{battle.warriors[1].photourl}}" class="warrior-profile-photo">
-				    <h2>{{battle.warriors[1].name}}</h2>
-				    <img src="{{battle.warriors[1].country.flagphotourl}}" class="
+		    		<img src="{{whichBattle.warriors[1].photourl}}" class="warrior-profile-photo">
+				    <h2>{{whichBattle.warriors[1].name}}</h2>
+				    <img src="{{whichBattle.warriors[1].country.flagphotourl}}" class="
 		    			warrior-country-flag-photo">
 		    	</div>
 	  		</div>
@@ -25,7 +25,7 @@
 
 	  <div class="item item-body" ng-click="toggleVideo($index)">
    		<video cache-view="false" class="video_content" width="100%" height="50%">
-   			<source ng-src="{{battle.warriors[0].battlesrc}}" type='video/mp4' />
+   			<source ng-src="{{warrior1battlesrc}}" type='video/mp4' />
 		</video>
 		<div class="playpause"></div>
 	  </div>
@@ -36,13 +36,6 @@
 		  <a class="button button-icon icon ion-android-share" ng-click="shareBattle($index)"></a>
 	  </div>
   	
-	<!-- <videogular vg-theme="controller.config.theme.url">
-        <vg-media vg-src="controller.config.sources"
-                  vg-tracks="controller.config.tracks"
-                  vg-native-controls="true">
-        </vg-media>
-    </videogular> -->
-		<!-- <img ng-src="{{urlForClipThumb(clip)}}" ng-click="showClip(clip)" style="height: 250px; width: 150px;"/> -->
   </div>
  
   </ion-content>

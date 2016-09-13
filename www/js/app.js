@@ -434,9 +434,10 @@ app.directive('hideTabBar', function($timeout) {
       
 })
 
-.controller("BattleDetailsController", function($scope, $http, $state) {
+.controller("BattleDetailsController", function($scope, $http, $state, $sce) {
 
   $scope.whichBattle = angular.fromJson($state.params.battle);
+  $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.whichBattle.warriors[0].battlesrcurl);
   console.log($scope.whichBattle);
 })
 
