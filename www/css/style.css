@@ -208,3 +208,23 @@
 	width: 20px;
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+.first-letter {
+	text-transform: capitalize;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
