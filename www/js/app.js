@@ -1,27 +1,7 @@
 var app = angular.module('starter', ['ionic', 'ngCordova', 'com.2fdevs.videogular'])
 
 app.value('currentUser',{})
-/*
-app.directive('hideTabs', function($rootScope, $state) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attributes) {
-            scope.$watch(attributes.hideTabs, function(value){
-              $rootScope.hideTabs = value;
-            });
 
-            scope.$on('$ionicView.beforeLeave', function() {
-                var stateName = $state.current.name;
-                if(stateName === 'tabs.detail') {
-                  $rootScope.hideTabs = true;
-                }else {
-                  $rootScope.hideTabs = false;
-                }
-            });
-        }
-    };
-})
-*/
 app.directive('hideTabBar', function($timeout) {
   var style = angular.element('<style>').html(
     '.has-tabs.no-tabs:not(.has-tabs-top) { bottom: 0; }\n' +
