@@ -262,7 +262,7 @@ app.directive('hideTabs', function($rootScope, $state) {
 })
 
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
- $timeout, $sce, $state) {
+ $timeout, $sce, $state, ToggleVideoService) {
 
   console.log("Battle controller called");
     
@@ -336,18 +336,18 @@ app.directive('hideTabs', function($rootScope, $state) {
       var options = { limit: 1, duration: 1 }; //time in seconds
 
       $cordovaCapture.captureVideo(options).then(function(videoData) {
-        VideoService.saveVideo(videoData).success(function(data) {
-          // $scope.clip = data;
-          // $scope.$apply();
-          $timeout(function() {
-            console.log("timeout invoked");
-            $scope.clip = data;
-            $scope.$apply();
-            $scope.clip = $sce.trustAsResourceUrl($scope.clip);
-          }, 200);
-        }).error(function(data) {
-          console.log('ERROR: ' + data);
-        });
+      VideoService.saveVideo(videoData).success(function(data) {
+        // $scope.clip = data;
+        // $scope.$apply();
+        $timeout(function() {
+          console.log("timeout invoked");
+          $scope.clip = data;
+          $scope.$apply();
+          $scope.clip = $sce.trustAsResourceUrl($scope.clip);
+        }, 200);
+      }).error(function(data) {
+        console.log('ERROR: ' + data);
+      });
       });
     };
 
@@ -367,10 +367,12 @@ app.directive('hideTabs', function($rootScope, $state) {
     }
 
     $scope.toggleVideo = function(index) {
+
+      ToggleVideoService.toggleVideo(index);
       
       if(index === undefined) return;
       
-      console.log("hello i will toggle video: "+index);
+   /*   console.log("hello i will toggle video: "+index);
       var myVideo = document.getElementsByTagName('video')[index];
       myVideo.addEventListener('ended',myHandler,false);
       function myHandler(e) {
@@ -390,7 +392,7 @@ app.directive('hideTabs', function($rootScope, $state) {
         
         playpausebutton.style.display = 'none';
         myVideo.play();
-      }
+      }*/
       
     }
 
@@ -583,9 +585,54 @@ app.directive('hideTabs', function($rootScope, $state) {
       // This is the initial function we call from our controller
       // Gets the videoData and calls the first service function
       // with the local URL of the video and returns the promise
-      saveVideo: function(data) {
+      toggleVideo: function(data) {
         createFileEntry(data[0].localURL);
         return promise;
       }
     }
+})
+
+.service('ToggleVideoService', function($q) {
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+     
+    promise.success = function(fn) {
+      promise.then(fn);
+      return promise;
+    }
+    promise.error = function(fn) {
+      promise.then(null, fn);
+      return promise;
+    }
+     
+    return {
+      toggleVideo : function(index) {
+      
+      if(index === undefined) return;
+      
+      console.log("hello i will toggle video: "+index);
+      var myVideo = document.getElementsByTagName('video')[index];
+      myVideo.addEventListener('ended',myHandler,false);
+      function myHandler(e) {
+        console.log("The video has finished");
+      }
+
+      var playpausebutton = document.getElementsByClassName("playpause")[index];
+
+      if(!myVideo.paused) {
+        playpausebutton.style.display = 'block';
+        myVideo.pause();
+      }else {
+        if(myVideo.src === undefined) {
+          myVideo.src = $scope.battles[index].battleSrc;
+          myVideo.load();
+        }
+        
+        playpausebutton.style.display = 'none';
+        myVideo.play();
+      }
+      
+        return promise;
+    }
+  }
 })
