@@ -267,7 +267,7 @@ app.directive('hideTabBar', function($timeout) {
 
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
  $timeout, $sce, $state, ToggleVideoService) {
-    
+
     $scope.clip1url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
     $scope.clip2url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
     $scope.clip1 =  $sce.trustAsResourceUrl($scope.clip1url);
@@ -439,6 +439,16 @@ app.directive('hideTabBar', function($timeout) {
         "timestamp": 1473791289
     }
   ];
+
+  var now = moment();
+  console.log(now.format("dddd, MMMM Do YYYY, h:mm:ss a"));
+  
+
+  for(i=0;i<$scope.comments.length;i++) {
+    var date = new Date($scope.comments[i].timestamp);
+    $scope.comments[i].timestamp = moment().from(date);
+  }
+
 
   $scope.whichBattle = angular.fromJson($state.params.battle);
   $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.whichBattle.warriors[0].battlesrcurl);
