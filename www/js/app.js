@@ -423,21 +423,7 @@ app.directive('hideTabBar', function($timeout) {
   $scope.warrior2CountryFlagPhoto = `http://inkwear.co.uk/wp-content/uploads/FLAG-SPAINMED5X3CM-2-1.jpg`;
 
   $scope.comments = [
-  {
-    "commentby" : {
-        name: "Rick Costanza",
-        email: "ricko@gmail.com",
-        photourl: $scope.warrior1ProfilePhoto,
-        country: {
-          name: "India",
-          flagphotourl: $scope.warrior1CountryFlagPhoto
-        },
-        battlesrc: $scope.clip1,
-        battlesrcurl: $scope.clip1url
-      },
-      "comment" : "Wow, fucking cool battle!",
-      "timestamp": 1473791289
-  }
+ 
   ];
 
   $scope.whichBattle = angular.fromJson($state.params.battle);

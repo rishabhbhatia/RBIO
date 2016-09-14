@@ -48,6 +48,7 @@
           show-delete="shouldShowDelete"
           show-reorder="shouldShowReorder"
           can-swipe="listCanSwipe"
+          ng-hide="comments.length === 0"
           >
 		  <ion-item ng-repeat="comment in comments"
 		            class="item-avatar">
