@@ -451,7 +451,7 @@ app.directive('hideTabBar', function($timeout) {
     ToggleVideoService.toggleVideo(myVideo, playpausebutton);
   }
 
-  $scope.postComment =(usercomment) {
+  $scope.postComment =function(usercomment) {
     console.log("Post user comment: "+usercomment);
 
     var usercommentobject = {
