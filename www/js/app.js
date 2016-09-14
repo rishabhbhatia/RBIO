@@ -440,10 +440,6 @@ app.directive('hideTabBar', function($timeout) {
     }
   ];
 
-  var now = moment();
-  console.log(now.format("dddd, MMMM Do YYYY, h:mm:ss a"));
-  
-
   for(i=0;i<$scope.comments.length;i++) {
     var date = new Date($scope.comments[i].timestamp);
     $scope.comments[i].timestamp = moment().from(date);
@@ -479,7 +475,7 @@ app.directive('hideTabBar', function($timeout) {
         battlesrcurl: $scope.clip1url
       },
       "comment" : usercomment,
-      "timestamp": 1473791289
+      "timestamp": moment().from(moment())
     }
     $scope.comments.push(usercommentobject);
   }
