@@ -450,6 +450,27 @@ app.directive('hideTabBar', function($timeout) {
 
     ToggleVideoService.toggleVideo(myVideo, playpausebutton);
   }
+
+  $scope.postComment =(usercomment) {
+    console.log("Post user comment: "+usercomment);
+
+    var usercommentobject = {
+    "commentby" : {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        },
+        battlesrc: $scope.clip1,
+        battlesrcurl: $scope.clip1url
+      },
+      "comment" : usercomment,
+      "timestamp": 1473791289
+    }
+    $scope.comments.push(usercommentobject);
+  }
 })
 
 .service('LoginService', function($q) {
