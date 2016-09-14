@@ -38,7 +38,8 @@
 
 	   <div class="item item-input-inset">
 	   	<div class="battle-details-comment-parent">
-	   		<textarea type="text" maxlength="200" class="battle-details-comment" placeholder="Write your comment..."></textarea>
+	   		<textarea type="text" maxlength="200" ng-trim="false" class="battle-details-comment" ng-model="usercomment" placeholder="Write your comment..."></textarea>
+	   		<p>{{200 - usercomment.length}} left</p>
 	   	</div>
 	    <a class="button button-icon icon ion-paper-airplane"></a>
 	  </div>
