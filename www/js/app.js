@@ -454,6 +454,8 @@ app.directive('hideTabBar', function($timeout) {
   $scope.postComment =function(usercomment) {
     console.log("Post user comment: "+usercomment);
 
+    if(usercomment === undefined) return;
+
     var usercommentobject = {
     "commentby" : {
         name: "Rick Costanza",
