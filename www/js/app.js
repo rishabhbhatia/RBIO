@@ -339,8 +339,7 @@ app.directive('hideTabBar', function($timeout) {
 
       $cordovaCapture.captureVideo(options).then(function(videoData) {
       VideoService.saveVideo(videoData).success(function(data) {
-        // $scope.clip = data;
-        // $scope.$apply();
+
         $timeout(function() {
           console.log("timeout invoked");
           $scope.clip = data;
@@ -412,6 +411,34 @@ app.directive('hideTabBar', function($timeout) {
 })
 
 .controller("BattleDetailsController", function($scope, $http, $state, $sce, ToggleVideoService) {
+
+  $scope.shouldShowDelete = false;
+  $scope.shouldShowReorder = false;
+  $scope.listCanSwipe = true
+
+  $scope.warrior1ProfilePhoto = `https://encrypted-tbn3.gstatic.com/images?q=tbn:
+    ANd9GcQdjiGN2euMAHiKkHr4WfLpUwOpsYtYvBOX_RYNHAbILf-RNuO4`;
+  $scope.warrior2ProfilePhoto = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsyoT5sbcLZ7uiwHmSE35xfFzlJcrSAUaL54X2AohKrNDnxTtaz6sIA`;
+  $scope.warrior1CountryFlagPhoto = `http://www.mapsofindia.com/maps/india/india-flag-1024x600.jpg`;
+  $scope.warrior2CountryFlagPhoto = `http://inkwear.co.uk/wp-content/uploads/FLAG-SPAINMED5X3CM-2-1.jpg`;
+
+  $scope.comments = [
+  {
+    "commentby" : {
+        name: "Rick Costanza",
+        email: "ricko@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "India",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        },
+        battlesrc: $scope.clip1,
+        battlesrcurl: $scope.clip1url
+      },
+      "comment" : "Wow, fucking cool battle!",
+      "timestamp": 1473791289
+  }
+  ];
 
   $scope.whichBattle = angular.fromJson($state.params.battle);
   $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.whichBattle.warriors[0].battlesrcurl);

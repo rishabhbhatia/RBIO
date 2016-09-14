@@ -35,7 +35,42 @@
 		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnBattle($index)"></a>
 		  <a class="button button-icon icon ion-android-share" ng-click="shareBattle($index)"></a>
 	  </div>
-  	
+
+	   <div class="item item-input-inset">
+	   	<div class="battle-details-comment-parent">
+	   		<textarea type="text" class="battle-details-comment" placeholder="Write your comment..."></textarea>
+	   	</div>
+	    <a class="button button-icon icon ion-paper-airplane"></a>
+	  </div>
+
+	  <ion-list
+          show-delete="shouldShowDelete"
+          show-reorder="shouldShowReorder"
+          can-swipe="listCanSwipe">
+		  <ion-item ng-repeat="comment in comments"
+		            class="item-avatar">
+
+		    <img ng-src="{{comment.commentby.photourl}}">
+		    <h2>{{item.title}}</h2>
+		    <p>{{item.description}}</p>
+		    <ion-option-button class="button-positive"
+		                       ng-click="share(item)">
+		      Share
+		    </ion-option-button>
+		    <ion-option-button class="button-info"
+		                       ng-click="edit(item)">
+		      Edit
+		    </ion-option-button>
+		    <ion-delete-button class="ion-minus-circled"
+		                       ng-click="items.splice($index, 1)">
+		    </ion-delete-button>
+		    <ion-reorder-button class="ion-navicon"
+		                        on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+		    </ion-reorder-button>
+
+		  </ion-item>
+		</ion-list>
+		  	
   </div>
  
   </ion-content>
