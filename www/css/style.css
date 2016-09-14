@@ -191,6 +191,18 @@
 	float:right;
 }
 
+.battle-details-comment-list-name {
+	margin: 0px 0px !important;
+}
+
+.battle-details-comment-list-timestamp {
+	font-size: 11px !important;
+}
+
+.battle-details-comment-list-comment {
+	font-size: 14px !important;
+}
+
 .center {
     margin-left: auto;
     margin-right: auto;

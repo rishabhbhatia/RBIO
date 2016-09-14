@@ -48,13 +48,15 @@
           show-delete="shouldShowDelete"
           show-reorder="shouldShowReorder"
           can-swipe="listCanSwipe"
-          class="hide">
+          >
 		  <ion-item ng-repeat="comment in comments"
 		            class="item-avatar">
 
 		    <img ng-src="{{comment.commentby.photourl}}">
-		    <h2>{{item.title}}</h2>
-		    <p>{{item.description}}</p>
+		    <h3 class="battle-details-comment-list-name">{{comment.commentby.name}}</h3>
+		    <p class="battle-details-comment-list-timestamp">{{comment.timestamp}}</p>
+
+		    <p class="battle-details-comment-list-comment">{{comment.comment}}</p>
 		    <ion-option-button class="button-positive"
 		                       ng-click="share(item)">
 		      Share
