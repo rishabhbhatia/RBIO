@@ -78,7 +78,7 @@
   </div>
  
   </ion-content>
-  <ion-footer-bar align-title="center" class="bar bar-light" ng-class="{hide : whichBattle.warriors.length !== 1}">
+  <ion-footer-bar align-title="center" class="bar bar-light" ng-hide="whichBattle.warriors.length !== 1">
 	  <div class="button-bar">
 		  <button class="button button-positive ion-icon ion-music-note icon-left padding uppercase" ng-click="captureVideo()">
 			  BATTLE {{whichBattle.warriors[0].name}}

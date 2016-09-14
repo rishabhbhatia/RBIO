@@ -251,7 +251,7 @@
 }
 
 .hide {
-	display: none;
+	display: hidden;
 }
 
 .show {
