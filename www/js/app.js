@@ -380,6 +380,7 @@ app.directive('hideTabBar', function($timeout) {
 
     $scope.toggleVote = function(index) {
         console.log("I toggle my vote for battle at index: "+index);
+        $scope.battles[index].isVoted = !$scope.battles[index].isVoted;
       }
 
       $scope.commentOnBattle = function(index) {
