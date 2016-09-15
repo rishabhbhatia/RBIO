@@ -304,7 +304,8 @@ app.directive('hideTabBar', function($timeout) {
         battlesrc: $scope.clip2,
         battlesrcurl: $scope.clip2url
       }
-      ]
+      ],
+      isVoted: true
     },
     {
       warriors: [
@@ -330,7 +331,8 @@ app.directive('hideTabBar', function($timeout) {
         battlesrc: $scope.clip2,
         battlesrcurl: $scope.clip1url
       }
-      ]
+      ],
+      isVoted: false
     }
     ];
 
