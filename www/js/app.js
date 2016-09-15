@@ -1,4 +1,4 @@
-var app = angular.module('starter', ['ionic', 'ngCordova', 'com.2fdevs.videogular'])
+var app = angular.module('starter', ['ionic', 'ngCordova', 'com.2fdevs.videogular', 'yaru22.angular-timeago'])
 
 app.value('currentUser',{})
 
@@ -440,12 +440,6 @@ app.directive('hideTabBar', function($timeout) {
     }
   ];
 
-  for(i=0;i<$scope.comments.length;i++) {
-    var date = new Date($scope.comments[i].timestamp);
-    $scope.comments[i].timestamp = moment().from(date);
-  }
-
-
   $scope.whichBattle = angular.fromJson($state.params.battle);
   $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.whichBattle.warriors[0].battlesrcurl);
   console.log($scope.whichBattle);
@@ -475,7 +469,7 @@ app.directive('hideTabBar', function($timeout) {
         battlesrcurl: $scope.clip1url
       },
       "comment" : usercomment,
-      "timestamp": moment().from(moment())
+      "timestamp": moment()
     }
     $scope.comments.push(usercommentobject);
   }
