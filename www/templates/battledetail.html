@@ -51,13 +51,13 @@
           ng-hide="comments.length === 0"
           >
 		  <ion-item ng-repeat="comment in comments"
-		            class="item-avatar">
+		            class="item-avatar item-text-wrap">
 
 		    <img ng-src="{{comment.commentby.photourl}}">
 		    <h3 class="battle-details-comment-list-name">{{comment.commentby.name}}</h3>
 		    <p class="battle-details-comment-list-timestamp"><time-ago from-time='{{ comment.timestamp }}'></time-ago></p>		
+		    <p class="battle-details-comment-list-comment item-text-wrap">{{comment.comment}}</p>
 
-		    <p class="battle-details-comment-list-comment">{{comment.comment}}</p>
 		    <ion-option-button class="button-positive"
 		                       ng-click="share(item)">
 		      Share
