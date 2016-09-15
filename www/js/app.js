@@ -266,7 +266,7 @@ app.directive('hideTabBar', function($timeout) {
 })
 
 .controller('BattleController', function($scope, $cordovaCapture, VideoService,
- $timeout, $sce, $state, ToggleVideoService) {
+ $timeout, $sce, $state, ToggleVideoService, $cordovaSocialSharing) {
 
     $scope.clip1url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
     $scope.clip2url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
@@ -389,6 +389,16 @@ app.directive('hideTabBar', function($timeout) {
 
       $scope.shareBattle = function(index) {
         console.log("I share battle at index: "+index);
+         $cordovaSocialSharing
+          // .share("Hola rishabh", "", null, $scope.battles[index].warriors.photourl) // Share via native share sheet
+          .share("Hola rishabh", "", null, "www.google.com") // Share via native share sheet
+          .then(function(result) {
+            // Success!
+            console.log('successfully shared');
+          }, function(err) {
+            // An error occured. Show a message to the user
+            console.log("gand fatt gayi");
+          });
       }
 
       $scope.showBattleDetails = function(battle) {
