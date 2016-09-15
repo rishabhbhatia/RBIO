@@ -416,6 +416,8 @@ app.directive('hideTabBar', function($timeout) {
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = false;
 
+  $scope.usercomment = "";
+
   $scope.warrior1ProfilePhoto = `https://encrypted-tbn3.gstatic.com/images?q=tbn:
     ANd9GcQdjiGN2euMAHiKkHr4WfLpUwOpsYtYvBOX_RYNHAbILf-RNuO4`;
   $scope.warrior2ProfilePhoto = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEsyoT5sbcLZ7uiwHmSE35xfFzlJcrSAUaL54X2AohKrNDnxTtaz6sIA`;
@@ -451,10 +453,10 @@ app.directive('hideTabBar', function($timeout) {
     ToggleVideoService.toggleVideo(myVideo, playpausebutton);
   }
 
-  $scope.postComment =function(usercomment) {
-    console.log("Post user comment: "+usercomment);
+  $scope.postComment =function() {
+    console.log("Post user comment: "+$scope.usercomment);
 
-    if(usercomment === undefined) return;
+    if($scope.usercomment === undefined) return;
 
     var usercommentobject = {
     "commentby" : {
@@ -468,10 +470,13 @@ app.directive('hideTabBar', function($timeout) {
         battlesrc: $scope.clip1,
         battlesrcurl: $scope.clip1url
       },
-      "comment" : usercomment,
+      "comment" : $scope.usercomment,
       "timestamp": moment()
     }
+
     $scope.comments.push(usercommentobject);
+
+    $scope.usercomment = '';
   }
 })
 
