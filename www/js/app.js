@@ -1,4 +1,8 @@
-var app = angular.module('starter', ['ionic', 'ngCordova', 'com.2fdevs.videogular', 'yaru22.angular-timeago'])
+var app = angular.module('starter', ['ionic', 'ngCordova', 'yaru22.angular-timeago',
+  "com.2fdevs.videogular",
+      "com.2fdevs.videogular.plugins.controls",
+      "com.2fdevs.videogular.plugins.overlayplay",
+      "com.2fdevs.videogular.plugins.poster"])
 
 app.value('currentUser',{})
 
@@ -405,9 +409,9 @@ app.directive('hideTabBar', function($timeout) {
         $state.go('tabs.detail', {battle : angular.toJson(battle)});
       }
 
-   /* this.config = {
+  /*  this.config = {
         sources: [
-          {src: $sce.trustAsResourceUrl("data/data/com.ionicframework.rbio/files/EwQkGVID_20160910_175236.mp4"), type: "video/mp4"}
+          {src: $sce.trustAsResourceUrl($scope.clip1url), type: "video/mp4"}
         ],
         tracks: [
           {
@@ -418,8 +422,8 @@ app.directive('hideTabBar', function($timeout) {
         plugins: {
           poster: "http://www.videogular.com/assets/images/videogular.png"
         }
-      };
-*/
+      };*/
+
       
 })
 
