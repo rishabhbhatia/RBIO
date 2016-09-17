@@ -21,7 +21,7 @@
 		    			warrior-country-flag-photo">
 		    	</div>
 
-		    	<div ng-class="{hide : battle.warriors.length !== 1}">
+		    	<div ng-class="{hide : battle.warriors.length !== 1}" ng-click="$event.stopPropagation(); captureVideo();">
 		    		<button class="button icon ion-mic-c battle-challenge-button"></button>
 		    	</div>
 	  		</div>
