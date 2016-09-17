@@ -323,7 +323,8 @@ app.directive('hideTabBar', function($timeout) {
         },
         battlesrc: $scope.clip1,
         battlesrcurl: $scope.clip1url
-      },
+      }
+     /* ,
       {
         name: "Josh Madhouse",
         email: "jmad@gmail.com",
@@ -334,7 +335,7 @@ app.directive('hideTabBar', function($timeout) {
         },
         battlesrc: $scope.clip2,
         battlesrcurl: $scope.clip1url
-      }
+      }*/
       ],
       isVoted: false
     }
