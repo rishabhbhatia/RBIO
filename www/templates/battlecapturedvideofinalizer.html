@@ -1,14 +1,17 @@
 <ion-view title="Battle Start" hide-tab-bar ng-controller="BattleVideoFinalizeController">
   <ion-content>
- 	<div class="modal transparent fullscreen-player" ng-click="closeModal()">
-    	<video ng-src="{{clipSrc}}" class="centerme" controls="controls" autoplay></video>
-	</div>   
+ 	<div class="fullscreen-player">
+    	<video class="centerme" controls="controls"
+    	autoplay id="videofinalizer">
+    		<source ng-src="{{warrior1battlesrc}}" type='video/mp4' />
+    	</video>
+	</div> 
  
   </ion-content>
   <ion-footer-bar align-title="center" class="bar bar-light">
 	  <div class="button-bar">
 		  <button class="button button-positive ion-icon ion-music-note icon-left padding uppercase" ng-click="startBattle()">
-			  READY BATTLE GO
+			  READY GO BATTLE
 		  </button>
 	  </div>
   </ion-footer-bar>

@@ -540,17 +540,14 @@ app.directive('hideTabBar', function($timeout) {
   }
 })
 
-.controller("BattleVideoFinalizeController", function($scope, $http, $state, $sce, ToggleVideoService) {
+.controller("BattleVideoFinalizeController", function($scope, $http, $state, $sce) {
 
   $scope.battle = angular.fromJson($state.params.battle);
   $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.battle.warriors[0].battlesrcurl);
   console.log($scope.battle);
 
-  $scope.toggleVideo = function() {
-    var myVideo = document.getElementById('videodetails');
-    var playpausebutton = document.getElementById("playpausedetails");
-
-    ToggleVideoService.toggleVideo(myVideo, playpausebutton);
+  $scope.startBattle = function() {
+    console.log("start battle, basically post to server & go back to main screen");
   }
 
 })
