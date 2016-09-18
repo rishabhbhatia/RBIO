@@ -452,6 +452,75 @@ app.directive('hideTabBar', function($timeout) {
         $state.go('tabs.detail', {battle : angular.toJson(battle)});
       }
 
+      $scope.refreshBattles = function() {
+
+          $scope.battles = [
+          {
+            warriors: [
+            {
+              name: "Rick Costanza",
+              email: "ricko@gmail.com",
+              photourl: $scope.warrior1ProfilePhoto,
+              country: {
+                name: "India",
+                flagphotourl: $scope.warrior1CountryFlagPhoto
+              },
+              battlesrc: $scope.clip1,
+              battlesrcurl: $scope.clip1url
+            },
+            {
+              name: "Josh Madhouse",
+              email: "jmad@gmail.com",
+              photourl: $scope.warrior2ProfilePhoto,
+              country: {
+                name: "Spain",
+                flagphotourl: $scope.warrior2CountryFlagPhoto
+              },
+              battlesrc: $scope.clip2,
+              battlesrcurl: $scope.clip2url
+            }
+            ],
+            isvoted: true,
+            battletype: {
+              type: "challenged"
+            }
+          },
+          {
+            warriors: [
+            {
+              name: "Rick Costanza",
+              email: "ricko@gmail.com",
+              photourl: $scope.warrior1ProfilePhoto,
+              country: {
+                name: "India",
+                flagphotourl: $scope.warrior1CountryFlagPhoto
+              },
+              battlesrc: $scope.clip1,
+              battlesrcurl: $scope.clip1url
+            }
+           /* ,
+            {
+              name: "Josh Madhouse",
+              email: "jmad@gmail.com",
+              photourl: $scope.warrior2ProfilePhoto,
+              country: {
+                name: "Spain",
+                flagphotourl: $scope.warrior2CountryFlagPhoto
+              },
+              battlesrc: $scope.clip2,
+              battlesrcurl: $scope.clip1url
+            }*/
+            ],
+            isvoted: false,
+            battletype: {
+              type: "open"
+            }
+          }
+          ];
+
+          $scope.$broadcast('scroll.refreshComplete');
+      }
+
   /*  this.config = {
         sources: [
           {src: $sce.trustAsResourceUrl($scope.clip1url), type: "video/mp4"}

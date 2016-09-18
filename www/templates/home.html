@@ -1,5 +1,9 @@
 <ion-view ng-controller="BattleController as controller" hide-nav-bar="true">
   <ion-content overflow-scroll="true">
+   <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="refreshBattles()">
+  </ion-refresher>
   <div class="list card" ng-repeat="battle in battles">
 	  <div class="item row" ng-click="showBattleDetails(battle)">
 		  	<div class="col col-46 center">
