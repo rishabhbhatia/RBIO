@@ -4,7 +4,7 @@
 	  <div class="item row" ng-click="showBattleDetails(battle)">
 		  	<div class="col col-46 center">
 		  		<div>
-					<img src="{{battle.warriors[0].photourl}}" class="warrior-profile-photo">
+					<img src="{{battle.warriors[0].photourl}}" class="warrior-profile-photo battle-winner">
 				    <h2>{{battle.warriors[0].name}}</h2>
 				    <img src="{{battle.warriors[0].country.flagphotourl}}" class="
 		    			warrior-country-flag-photo">
@@ -14,14 +14,14 @@
         		<h2>vs</h2>
         	</div>
 		    <div class="col col-46 center">
-		    	<div ng-class="{hide : battle.warriors.length === 1}">
+		    	<div ng-class="{hide : battle.battletype.type === 'open'}">
 		    		<img src="{{battle.warriors[1].photourl}}" class="warrior-profile-photo">
 				    <h2>{{battle.warriors[1].name}}</h2>
 				    <img src="{{battle.warriors[1].country.flagphotourl}}" class="
 		    			warrior-country-flag-photo">
 		    	</div>
 
-		    	<div ng-class="{hide : battle.warriors.length !== 1}" ng-click="$event.stopPropagation(); captureVideo();">
+		    	<div ng-class="{hide : battle.battletype.type !== 'open'}" ng-click="$event.stopPropagation(); captureVideo();">
 		    		<button class="button icon ion-mic-c battle-challenge-button"></button>
 		    	</div>
 	  		</div>
@@ -45,7 +45,7 @@
 		</div> -->
 
 	  <div class="button-bar">
-		  <a class="button button-icon icon ion-thumbsup" ng-class="{battlevoteactive: battle.isVoted === true}" ng-click="toggleVote($index)"></a>
+		  <a class="button button-icon icon ion-thumbsup" ng-class="{battlevoteactive: battle.isvoted === true}" ng-click="toggleVote($index)"></a>
 		  <a class="button button-icon icon ion-chatbubble-working" ng-click="commentOnBattle($index)"></a>
 		  <a class="button button-icon icon ion-android-share" ng-click="shareBattle($index)"></a>
 	  </div>

@@ -257,5 +257,17 @@
 .battle-challenge-button {
 	border-color: gray;
 	border-radius: 10px;
+	border-width: 1px;
+}
+
+.battle-winner {
+	border-color: green;
+	border-width: 2px;
+	border-radius: 10px;
+}
+
+.battle-loser {
+	border-color: red;
+	border-width: 2px;
 }
 
