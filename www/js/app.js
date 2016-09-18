@@ -95,6 +95,17 @@ app.directive('hideTabBar', function($timeout) {
       }
     })
 
+     .state('tabs.videofinalizer', {
+      url: '/home/:battle',
+      views: {
+        'home-tab': {
+          templateUrl: 'templates/battlecapturedvideofinalizer.html',
+          controller: 'BattleVideoFinalizeController'
+        }
+      }
+    })
+
+
      .state('tabs.messages', {
       url: '/messages',
       views: {
@@ -348,16 +359,41 @@ app.directive('hideTabBar', function($timeout) {
     ];
 
     $scope.captureVideo = function() {
-      var options = { limit: 1, duration: 1 }; //time in seconds
+
+    $scope.newbattle = 
+    {
+      warriors: [
+      {
+        name: "Nigga Killer",
+        email: "niggako@gmail.com",
+        photourl: $scope.warrior1ProfilePhoto,
+        country: {
+          name: "USA",
+          flagphotourl: $scope.warrior1CountryFlagPhoto
+        },
+        battlesrc: "",
+        battlesrcurl: ""
+      }
+      ],
+      isvoted: false,
+      battletype: {
+        type: "open"
+      }
+    };
+
+      var options = { limit: 1, duration: 5 }; //time in seconds
 
       $cordovaCapture.captureVideo(options).then(function(videoData) {
       VideoService.saveVideo(videoData).success(function(data) {
 
         $timeout(function() {
           console.log("timeout invoked");
-          $scope.clip = data;
+          $scope.newbattle.warriors[0].battlesrc = $sce.trustAsResourceUrl(data);
+          $scope.newbattle.warriors[0].battlesrcurl = data;
           $scope.$apply();
-          $scope.clip = $sce.trustAsResourceUrl($scope.clip);
+
+          $state.go('tabs.videofinalizer', {battle : angular.toJson($scope.newbattle)});
+
         }, 200);
       }).error(function(data) {
         console.log('ERROR: ' + data);
@@ -461,14 +497,14 @@ app.directive('hideTabBar', function($timeout) {
           battlesrc: $scope.clip1,
           battlesrcurl: $scope.clip1url
         },
-        "comment" : "Wow, fucking cool battle!",
-        "timestamp": 1473791289
+        "text" : "Wow, fucking cool battle!",
+        "timestamp": 1474189322
     }
   ];
 
-  $scope.whichBattle = angular.fromJson($state.params.battle);
-  $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.whichBattle.warriors[0].battlesrcurl);
-  console.log($scope.whichBattle);
+  $scope.battle = angular.fromJson($state.params.battle);
+  $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.battle.warriors[0].battlesrcurl);
+  console.log($scope.battle);
 
   $scope.toggleVideo = function() {
     var myVideo = document.getElementById('videodetails');
@@ -502,6 +538,21 @@ app.directive('hideTabBar', function($timeout) {
 
     $scope.usercomment = '';
   }
+})
+
+.controller("BattleVideoFinalizeController", function($scope, $http, $state, $sce, ToggleVideoService) {
+
+  $scope.battle = angular.fromJson($state.params.battle);
+  $scope.warrior1battlesrc = $sce.trustAsResourceUrl($scope.battle.warriors[0].battlesrcurl);
+  console.log($scope.battle);
+
+  $scope.toggleVideo = function() {
+    var myVideo = document.getElementById('videodetails');
+    var playpausebutton = document.getElementById("playpausedetails");
+
+    ToggleVideoService.toggleVideo(myVideo, playpausebutton);
+  }
+
 })
 
 .service('LoginService', function($q) {
@@ -653,7 +704,7 @@ app.directive('hideTabBar', function($timeout) {
       // This is the initial function we call from our controller
       // Gets the videoData and calls the first service function
       // with the local URL of the video and returns the promise
-      toggleVideo: function(data) {
+      saveVideo: function(data) {
         createFileEntry(data[0].localURL);
         return promise;
       }
