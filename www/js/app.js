@@ -394,7 +394,7 @@ app.directive('hideTabBar', function($timeout) {
 
           $state.go('tabs.videofinalizer', {battle : angular.toJson($scope.newbattle)});
 
-        }, 200);
+        }, 50);
       }).error(function(data) {
         console.log('ERROR: ' + data);
       });
